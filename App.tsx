@@ -8,10 +8,41 @@ import {
   TouchableOpacity,
 } from "react-native";
 
+
+
 export default class App  extends React.Component{
   state = {
-    answer: 0
+    answer: 0,
+    firstInput: "",
+    secondInput:""
   }
+
+  add = () => {
+    var num1 = this.state.firstInput;
+    var num2 = this.state.secondInput;
+
+    if (num1 === "" && num2 === ""){
+      
+    }else {
+      this.setState({
+        answer: num1 + num2
+      })
+    }
+    }
+
+    
+
+  equals = () => {
+    this.add()
+    console.info(this.state.answer)
+  }
+
+  clear = () => {
+    this.setState({
+      answer: 0
+    })
+  }
+
   render() {
   return (
     <SafeAreaView style={styles.container}>
@@ -20,13 +51,13 @@ export default class App  extends React.Component{
       </View>
 
       <View style={styles.first_column}>
-        <TouchableOpacity>
+        <TouchableOpacity onPress={this.clear}>
           <View style={styles.operators_view}>
             <Text style={styles.operators}>AC</Text>
           </View>
         </TouchableOpacity>
 
-        <TouchableOpacity>
+        <TouchableOpacity onPress={this.add}>
           <View style={styles.operators_view}>
             <Text style={styles.operators}>+/-</Text>
           </View>
@@ -136,7 +167,7 @@ export default class App  extends React.Component{
           </View>
         </TouchableOpacity>
 
-        <TouchableOpacity>
+        <TouchableOpacity onPress={this.equals}>
           <View style={styles.operators_view}>
             <Text style={styles.operators}>=</Text>
           </View>
