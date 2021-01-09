@@ -8,11 +8,15 @@ import {
   TouchableOpacity,
 } from "react-native";
 
-export default function App() {
+export default class App  extends React.Component{
+  state = {
+    answer: 0
+  }
+  render() {
   return (
     <SafeAreaView style={styles.container}>
       <View style={styles.answer_view}>
-        <Text style={styles.answer_text}>0</Text>
+        <Text style={styles.answer_text}>{this.state.answer}</Text>
       </View>
 
       <View style={styles.first_column}>
@@ -143,6 +147,7 @@ export default function App() {
     </SafeAreaView>
   );
 }
+}
 
 const styles = StyleSheet.create({
   container: {
@@ -169,6 +174,8 @@ const styles = StyleSheet.create({
     textAlign: "right",
     fontWeight: "400",
     fontSize: 100,
+    paddingRight: 30,
+
   },
   first_column: {
     flexDirection: "row",
